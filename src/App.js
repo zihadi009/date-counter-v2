@@ -14,6 +14,10 @@ function Counter() {
   const [count, setCount] = useState(0);
   const date = new Date();
   date.setDate(date.getDate() + count);
+  function handleReset() {
+    setStep(1);
+    setCount(0);
+  }
   return (
     <div>
       <div>
@@ -34,6 +38,10 @@ function Counter() {
         </span>
         <span>{date.toDateString()}</span>
       </p>
+      {(count !== 0 || step !== 1) ?
+        (<div>
+          <button onClick={handleReset}>Reset</button>
+        </div>) : null}
     </div>
   )
 }
